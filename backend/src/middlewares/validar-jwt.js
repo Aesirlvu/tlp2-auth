@@ -11,7 +11,9 @@ export const validateJwt = (req, res, next) => {
   const token = req.cookies.authToken || req.session.token;
 
   if (!token) {
-    return res.status(403).json({ message: "Token no proporcionado" });
+    return res
+      .status(403)
+      .json({ message: "Inicia sesión para realizar esta acción" });
   }
 
   const decoded = jwt.verify(token, SECRET_KEY);
